@@ -1,8 +1,8 @@
 var appRoot = require('app-root-path');
 var con = require(appRoot + '/services/connectionService');
 
-exports.getCasts = function (queryString, callback) {
-  var sql = "select  * from tbl_caste";
+exports.getPermissions = function (queryString, callback) {
+  var sql = "select  * from permissions";
     con.query(sql, function (err, result) {
         if (err) {
             callback(null, err);
@@ -15,8 +15,8 @@ exports.getCasts = function (queryString, callback) {
     });
 }
 
-exports.getCastById = function (id, callback) {
-    var sql = "select  * from tbl_caste where id='" + id + "'";
+exports.getPermissionById = function (id, callback) {
+    var sql = "select  * from permissions where id='" + id + "'";
     con.query(sql, function (err, result) {
         if (err) {
             callback(null, err);
@@ -29,28 +29,27 @@ exports.getCastById = function (id, callback) {
     });
 }
 
-exports.postCast = function (caste, callback) {
+exports.postPermission = function (Permission, callback) {
  var setString = "";
  var keyString="";
  var valueString="";
-    let casteObjectLeng = Object.keys(caste).length;
+    let PermissionbjectLeng = Object.keys(Permission).length;
     var i = 1;
-    for (var key in caste) {  
-        if (i != casteObjectLeng)
+    for (var key in Permission) {  
+        if (i != PermissionbjectLeng)
 		{
 		keyString=keyString+key+',';
-		valueString=valueString+"'"+caste[key]+"',"; 
+		valueString=valueString+"'"+Permission[key]+"',"; 
 		}
 		else 
 		{
 		keyString=keyString+key;
-		valueString=valueString+"'"+caste[key]+"'"; 
+		valueString=valueString+"'"+Permission[key]+"'"; 
         } 
-        i++;
-
+        i++; 
     }
 
-    var sql = "INSERT INTO tbl_caste ("+keyString+") VALUES (" +valueString+")";
+    var sql = "INSERT INTO permissions ("+keyString+") VALUES (" +valueString+")";
 
     con.query(sql, function (err, result) {
         if (err) {
@@ -62,22 +61,22 @@ exports.postCast = function (caste, callback) {
             return;
         }
     });
-} 
- exports.patchCast = function (id, caste, callback) {
+}
+ exports.patchPermission = function (id, Permission, callback) {
     var setString = "";
-    let casteObjectLeng = Object.keys(caste).length;
+    let PermissionbjectLeng = Object.keys(Permission).length;
     var i = 1;
-    for (var key in caste) {
+    for (var key in Permission) {
 
-        console.log(key + "  " + caste[key]); // here is your column name you are looking for
-        if (i != casteObjectLeng)
-            setString = setString + key + "='" + caste[key] + "',";
+        console.log(key + "  " + Permission[key]); // here is your column name you are looking for
+        if (i != PermissionbjectLeng)
+            setString = setString + key + "='" + Permission[key] + "',";
         else
-            setString = setString + key + "='" + caste[key] + "'";
+            setString = setString + key + "='" + Permission[key] + "'";
         i++;
 
     }
-    var sql = "UPDATE tbl_caste SET " + setString + "WHERE id = '" + id + "'";
+    var sql = "UPDATE permissions SET " + setString + "WHERE id = '" + id + "'";
     console.log("Final Update query =\n" + sql);
     con.query(sql, function (err, result) {
         if (err) {
@@ -91,8 +90,8 @@ exports.postCast = function (caste, callback) {
     })
 }
 
-exports.deleteCast = function (id, callback) {
-    var sql = "DELETE from tbl_caste where id='" + id + "'";
+exports.deletePermission = function (id, callback) {
+    var sql = "DELETE from permissions where id='" + id + "'";
     con.query(sql, function (err, result) {
         if (err) {
             callback(null, err);

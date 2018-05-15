@@ -35,18 +35,18 @@ exports.postCountry = function (country, callback) {
  var valueString="";
     let countrybjectLeng = Object.keys(country).length;
     var i = 1;
-    for (var key in country) { 
+    for (var key in country) {  
         if (i != countrybjectLeng)
 		{
-		keyString=keyString+',';
+		keyString=keyString+key+',';
 		valueString=valueString+"'"+country[key]+"',"; 
 		}
-		else
-		 
+		else 
 		{
-		keyString=keyString;
-		valueString=valueString+"'"+country[key]; 
-		} 
+		keyString=keyString+key;
+		valueString=valueString+"'"+country[key]+"'"; 
+        } 
+        i++;
 
     }
 

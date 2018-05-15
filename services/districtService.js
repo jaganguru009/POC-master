@@ -35,17 +35,18 @@ exports.postDistrict = function (district, callback) {
  var valueString="";
     let districtbjectLeng = Object.keys(district).length;
     var i = 1;
-    for (var key in district) { 
+    for (var key in district) {  
         if (i != districtbjectLeng)
 		{
-		keyString=keyString+',';
+		keyString=keyString+key+',';
 		valueString=valueString+"'"+district[key]+"',"; 
 		}
 		else 
 		{
-		keyString=keyString;
-		valueString=valueString+"'"+district[key]; 
-		} 
+		keyString=keyString+key;
+		valueString=valueString+"'"+district[key]+"'"; 
+        } 
+        i++;
 
     }
 

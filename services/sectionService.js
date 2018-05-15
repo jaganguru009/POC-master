@@ -35,18 +35,18 @@ exports.postSection = function (section, callback) {
  var valueString="";
     let sectionbjectLeng = Object.keys(section).length;
     var i = 1;
-    for (var key in section) { 
+    for (var key in section) {  
         if (i != sectionbjectLeng)
 		{
-		keyString=keyString+',';
+		keyString=keyString+key+',';
 		valueString=valueString+"'"+section[key]+"',"; 
 		}
 		else 
 		{
-		keyString=keyString;
-		valueString=valueString+"'"+section[key]; 
-		} 
-
+		keyString=keyString+key;
+		valueString=valueString+"'"+section[key]+"'"; 
+        } 
+        i++; 
     }
 
     var sql = "INSERT INTO tbl_section ("+keyString+") VALUES (" +valueString+")";

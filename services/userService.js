@@ -35,13 +35,15 @@ exports.postUser = function (user, callback) {
     });
 }
 exports.isUserValidated = function (user, callback) {
-    con.query("SELECT * FROM tbl_admin_login WHERE login_user_name = '" + user.login_user_name + "'" + " and login_password='" + user.login_password + "'", function (err, result) {
+    var sql="SELECT p.name as Permission,RT.type_name FROM tbl_admin_login al,permissions p,tbl_role_type RT WHERE al.login_user_name = '" + user.login_user_name + "'" + " and al.login_password='" + user.login_password + "'"+" and al.login_role_id=p.roleId and RT.id=al.login_role_id";
+    console.log("SQL = "+sql)
+    con.query(sql, function (err, result) {
         if (err) {
             callback(null, err);
             return;
         }
         if (result.length > 0) {
-            callback(null, true);
+            callback(null, result);
             return;
         }
         else {

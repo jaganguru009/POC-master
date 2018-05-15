@@ -35,18 +35,20 @@ exports.postAdmissionType = function (admissionType, callback) {
     var valueString = "";
     let admissionTypeObjectLeng = Object.keys(admissionType).length;
     var i = 1;
-    for (var key in admissionType) {
-        if (i != admissionTypeObjectLeng) {
-            keyString = keyString + ',';
-            valueString = valueString + "'" + admissionType[key] + "',";
-        }
-        else 
-            {
-                keyString = keyString;
-                valueString = valueString + "'" + admissionType[key];
-            }
+    for (var key in admissionType) {  
+        if (i != admissionTypeObjectLeng)
+		{
+		keyString=keyString+key+',';
+		valueString=valueString+"'"+admissionType[key]+"',"; 
+		}
+		else 
+		{
+		keyString=keyString+key;
+		valueString=valueString+"'"+admissionType[key]+"'"; 
+        } 
+        i++;
 
-        }
+    }
 
         var sql = "INSERT INTO tbl_admission_type (" + keyString + ") VALUES (" + valueString + ")";
 

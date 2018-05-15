@@ -35,17 +35,18 @@ exports.postInstitude = function (institude, callback) {
  var valueString="";
     let institudebjectLeng = Object.keys(institude).length;
     var i = 1;
-    for (var key in institude) { 
+    for (var key in institude) {  
         if (i != institudebjectLeng)
 		{
-		keyString=keyString+',';
+		keyString=keyString+key+',';
 		valueString=valueString+"'"+institude[key]+"',"; 
 		}
 		else 
 		{
-		keyString=keyString;
-		valueString=valueString+"'"+institude[key]; 
-		} 
+		keyString=keyString+key;
+		valueString=valueString+"'"+institude[key]+"'"; 
+        } 
+        i++;
 
     }
 

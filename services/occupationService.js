@@ -35,17 +35,18 @@ exports.postOccupation = function (occupation, callback) {
  var valueString="";
     let occupationbjectLeng = Object.keys(occupation).length;
     var i = 1;
-    for (var key in occupation) { 
+    for (var key in occupation) {  
         if (i != occupationbjectLeng)
 		{
-		keyString=keyString+',';
+		keyString=keyString+key+',';
 		valueString=valueString+"'"+occupation[key]+"',"; 
 		}
 		else 
 		{
-		keyString=keyString;
-		valueString=valueString+"'"+occupation[key]; 
-		} 
+		keyString=keyString+key;
+		valueString=valueString+"'"+occupation[key]+"'"; 
+        } 
+        i++;
 
     }
 

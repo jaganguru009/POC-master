@@ -35,17 +35,18 @@ exports.postAdmission = function (admission, callback) {
  var valueString="";
     let admissionbjectLeng = Object.keys(admission).length;
     var i = 1;
-    for (var key in admission) { 
+    for (var key in admission) {  
         if (i != admissionbjectLeng)
 		{
-		keyString=keyString+',';
+		keyString=keyString+key+',';
 		valueString=valueString+"'"+admission[key]+"',"; 
 		}
 		else 
 		{
-		keyString=keyString;
-		valueString=valueString+"'"+admission[key]; 
-		} 
+		keyString=keyString+key;
+		valueString=valueString+"'"+admission[key]+"'"; 
+        } 
+        i++;
 
     }
 

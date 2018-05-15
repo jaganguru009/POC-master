@@ -35,18 +35,18 @@ exports.postSubcaste = function (subcaste, callback) {
  var valueString="";
     let subcastebjectLeng = Object.keys(subcaste).length;
     var i = 1;
-    for (var key in subcaste) { 
+    for (var key in subcaste) {  
         if (i != subcastebjectLeng)
 		{
-		keyString=keyString+',';
+		keyString=keyString+key+',';
 		valueString=valueString+"'"+subcaste[key]+"',"; 
 		}
 		else 
 		{
-		keyString=keyString;
-		valueString=valueString+"'"+subcaste[key]; 
-		} 
-
+		keyString=keyString+key;
+		valueString=valueString+"'"+subcaste[key]+"'"; 
+        } 
+        i++; 
     }
 
     var sql = "INSERT INTO tbl_subcaste ("+keyString+") VALUES (" +valueString+")";

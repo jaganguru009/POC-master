@@ -35,18 +35,20 @@ exports.postClass = function (classO, callback) {
     var valueString = "";
     let classObjectLeng = Object.keys(classO).length;
     var i = 1;
-    for (var key in classO) {
-        if (i != classObjectLeng) {
-            keyString = keyString + ',';
-            valueString = valueString + "'" + classO[key] + "',";
-        }
-        else 
-            {
-                keyString = keyString;
-                valueString = valueString + "'" + classO[key];
-            }
+    for (var key in classO) {  
+        if (i != classObjectLeng)
+		{
+		keyString=keyString+key+',';
+		valueString=valueString+"'"+classO[key]+"',"; 
+		}
+		else 
+		{
+		keyString=keyString+key;
+		valueString=valueString+"'"+classO[key]+"'"; 
+        } 
+        i++;
 
-        }
+    }
 
         var sql = "INSERT INTO tbl_class (" + keyString + ") VALUES (" + valueString + ")";
 

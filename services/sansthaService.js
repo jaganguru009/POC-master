@@ -36,20 +36,24 @@ exports.postSanstha = function (sanstha, callback) {
     let sansthabjectLeng = Object.keys(sanstha).length;
     var i = 1;
     for (var key in sanstha) { 
+        console.log("I ===="+i+"  \n sansthabjectLeng===="+sansthabjectLeng);
         if (i != sansthabjectLeng)
 		{
-		keyString=keyString+',';
+		keyString=keyString+key+',';
 		valueString=valueString+"'"+sanstha[key]+"',"; 
 		}
 		else 
 		{
-		keyString=keyString;
-		valueString=valueString+"'"+sanstha[key]; 
-		} 
+		keyString=keyString+key;
+		valueString=valueString+"'"+sanstha[key]+"'"; 
+        } 
+        i++;
 
     }
 
     var sql = "INSERT INTO tbl_sanstha ("+keyString+") VALUES (" +valueString+")";
+    console.log("SQL ++++++ "+sql)
+
 
     con.query(sql, function (err, result) {
         if (err) {

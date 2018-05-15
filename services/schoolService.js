@@ -35,18 +35,18 @@ exports.postSchool = function (school, callback) {
  var valueString="";
     let schoolbjectLeng = Object.keys(school).length;
     var i = 1;
-    for (var key in school) { 
+    for (var key in school) {  
         if (i != schoolbjectLeng)
 		{
-		keyString=keyString+',';
+		keyString=keyString+key+',';
 		valueString=valueString+"'"+school[key]+"',"; 
 		}
 		else 
 		{
-		keyString=keyString;
-		valueString=valueString+"'"+school[key]; 
-		} 
-
+		keyString=keyString+key;
+		valueString=valueString+"'"+school[key]+"'"; 
+        } 
+        i++; 
     }
 
     var sql = "INSERT INTO tbl_school ("+keyString+") VALUES (" +valueString+")";

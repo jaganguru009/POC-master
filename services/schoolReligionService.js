@@ -35,18 +35,18 @@ exports.postschoolReligion = function (schoolReligion, callback) {
  var valueString="";
     let schoolReligionbjectLeng = Object.keys(schoolReligion).length;
     var i = 1;
-    for (var key in schoolReligion) { 
-        if (i != schoolReligionbjectLeng)
+    for (var key in schoolReligion) {  
+        if (i != cchoolCategorybjectLeng)
 		{
-		keyString=keyString+',';
+		keyString=keyString+key+',';
 		valueString=valueString+"'"+schoolReligion[key]+"',"; 
 		}
 		else 
 		{
-		keyString=keyString;
-		valueString=valueString+"'"+schoolReligion[key]; 
-		} 
-
+		keyString=keyString+key;
+		valueString=valueString+"'"+schoolReligion[key]+"'"; 
+        } 
+        i++; 
     }
 
     var sql = "INSERT INTO tbl_school_religion ("+keyString+") VALUES (" +valueString+")";

@@ -35,18 +35,18 @@ exports.postState = function (state, callback) {
  var valueString="";
     let statebjectLeng = Object.keys(state).length;
     var i = 1;
-    for (var key in state) { 
+    for (var key in state) {  
         if (i != statebjectLeng)
 		{
-		keyString=keyString+',';
+		keyString=keyString+key+',';
 		valueString=valueString+"'"+state[key]+"',"; 
 		}
 		else 
 		{
-		keyString=keyString;
-		valueString=valueString+"'"+state[key]; 
-		} 
-
+		keyString=keyString+key;
+		valueString=valueString+"'"+state[key]+"'"; 
+        } 
+        i++; 
     }
 
     var sql = "INSERT INTO tbl_state ("+keyString+") VALUES (" +valueString+")";

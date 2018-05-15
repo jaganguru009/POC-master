@@ -35,18 +35,18 @@ exports.postSchoolCategory = function (cchoolCategory, callback) {
  var valueString="";
     let cchoolCategorybjectLeng = Object.keys(cchoolCategory).length;
     var i = 1;
-    for (var key in cchoolCategory) { 
+    for (var key in cchoolCategory) {  
         if (i != cchoolCategorybjectLeng)
 		{
-		keyString=keyString+',';
+		keyString=keyString+key+',';
 		valueString=valueString+"'"+cchoolCategory[key]+"',"; 
 		}
 		else 
 		{
-		keyString=keyString;
-		valueString=valueString+"'"+cchoolCategory[key]; 
-		} 
-
+		keyString=keyString+key;
+		valueString=valueString+"'"+cchoolCategory[key]+"'"; 
+        } 
+        i++; 
     }
 
     var sql = "INSERT INTO tbl_school_category ("+keyString+") VALUES (" +valueString+")";

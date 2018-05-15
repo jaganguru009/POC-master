@@ -35,18 +35,18 @@ exports.postTaluka = function (taluka, callback) {
  var valueString="";
     let talukabjectLeng = Object.keys(taluka).length;
     var i = 1;
-    for (var key in taluka) { 
+    for (var key in taluka) {  
         if (i != talukabjectLeng)
 		{
-		keyString=keyString+',';
+		keyString=keyString+key+',';
 		valueString=valueString+"'"+taluka[key]+"',"; 
 		}
 		else 
 		{
-		keyString=keyString;
-		valueString=valueString+"'"+taluka[key]; 
-		} 
-
+		keyString=keyString+key;
+		valueString=valueString+"'"+taluka[key]+"'"; 
+        } 
+        i++; 
     }
 
     var sql = "INSERT INTO tbl_taluka ("+keyString+") VALUES (" +valueString+")";

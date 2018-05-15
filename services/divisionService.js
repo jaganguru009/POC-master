@@ -35,17 +35,18 @@ exports.postDivision = function (division, callback) {
  var valueString="";
     let divisionbjectLeng = Object.keys(division).length;
     var i = 1;
-    for (var key in division) { 
+    for (var key in division) {  
         if (i != divisionbjectLeng)
 		{
-		keyString=keyString+',';
+		keyString=keyString+key+',';
 		valueString=valueString+"'"+division[key]+"',"; 
 		}
 		else 
 		{
-		keyString=keyString;
-		valueString=valueString+"'"+division[key]; 
-		} 
+		keyString=keyString+key;
+		valueString=valueString+"'"+division[key]+"'"; 
+        } 
+        i++;
 
     }
 

@@ -35,15 +35,18 @@ exports.postAcademicYear = function (academicYear, callback) {
     var valueString = "";
     let academicYearObjectLeng = Object.keys(academicYear).length;
     var i = 1;
-    for (var key in academicYear) {
-        if (i != academicYearObjectLeng) {
-            keyString = keyString + ',';
-            valueString = valueString + "'" + academicYear[key] + "',";
-        }
-        else {
-            keyString = keyString;
-            valueString = valueString + "'" + academicYear[key];
-        }
+    for (var key in academicYear) {  
+        if (i != academicYearObjectLeng)
+		{
+		keyString=keyString+key+',';
+		valueString=valueString+"'"+academicYear[key]+"',"; 
+		}
+		else 
+		{
+		keyString=keyString+key;
+		valueString=valueString+"'"+academicYear[key]+"'"; 
+        } 
+        i++;
 
     }
 

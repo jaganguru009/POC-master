@@ -35,18 +35,18 @@ exports.postschoolSubcaste = function (schoolSubcaste, callback) {
  var valueString="";
     let schoolSubcastebjectLeng = Object.keys(schoolSubcaste).length;
     var i = 1;
-    for (var key in schoolSubcaste) { 
+    for (var key in schoolSubcaste) {  
         if (i != schoolSubcastebjectLeng)
 		{
-		keyString=keyString+',';
+		keyString=keyString+key+',';
 		valueString=valueString+"'"+schoolSubcaste[key]+"',"; 
 		}
 		else 
 		{
-		keyString=keyString;
-		valueString=valueString+"'"+schoolSubcaste[key]; 
-		} 
-
+		keyString=keyString+key;
+		valueString=valueString+"'"+schoolSubcaste[key]+"'"; 
+        } 
+        i++; 
     }
 
     var sql = "INSERT INTO tbl_school_subcaste ("+keyString+") VALUES (" +valueString+")";

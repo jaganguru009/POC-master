@@ -35,19 +35,20 @@ exports.postCategory = function (category, callback) {
     var valueString = "";
     let categoryObjectLeng = Object.keys(category).length;
     var i = 1;
-    for (var key in category) {
-        if (i != categoryObjectLeng) {
-            keyString = keyString + ',';
-            valueString = valueString + "'" + category[key] + "',";
-        }
-        else 
-            {
-                keyString = keyString;
-                valueString = valueString + "'" + category[key];
-            }
+    for (var key in category) {  
+        if (i != categoryObjectLeng)
+		{
+		keyString=keyString+key+',';
+		valueString=valueString+"'"+category[key]+"',"; 
+		}
+		else 
+		{
+		keyString=keyString+key;
+		valueString=valueString+"'"+category[key]+"'"; 
+        } 
+        i++;
 
-        }
-
+    }
         var sql = "INSERT INTO tbl_category (" + keyString + ") VALUES (" + valueString + ")";
 
         con.query(sql, function (err, result) {

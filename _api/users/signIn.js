@@ -10,7 +10,7 @@ router.post('/', function (req, res, next) {
     userService.isUserValidated(req.body, function (err, isSuccess) {
         console.log("isSuccess  "+isSuccess);
         if (isSuccess) { 
-            res.json("LoggedIn");
+            res.json(isSuccess  );
             return;
         }
         else {

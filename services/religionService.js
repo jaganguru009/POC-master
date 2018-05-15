@@ -35,17 +35,18 @@ exports.postReligion = function (religion, callback) {
  var valueString="";
     let religionbjectLeng = Object.keys(religion).length;
     var i = 1;
-    for (var key in religion) { 
+    for (var key in religion) {  
         if (i != religionbjectLeng)
 		{
-		keyString=keyString+',';
+		keyString=keyString+key+',';
 		valueString=valueString+"'"+religion[key]+"',"; 
 		}
 		else 
 		{
-		keyString=keyString;
-		valueString=valueString+"'"+religion[key]; 
-		} 
+		keyString=keyString+key;
+		valueString=valueString+"'"+religion[key]+"'"; 
+        } 
+        i++;
 
     }
 

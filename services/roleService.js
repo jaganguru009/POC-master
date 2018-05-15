@@ -31,7 +31,7 @@ exports.getRoleById = function (id, callback) {
 
 exports.postRole = function (role, callback) {
     var sql = "INSERT INTO tbl_role_type (type_name) VALUES (" +
-        "'" + role.role + "')";
+        "'" + role.type_name + "')";
 
     con.query(sql, function (err, result) {
         if (err) {
