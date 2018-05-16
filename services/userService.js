@@ -2,6 +2,17 @@ var appRoot = require('app-root-path');
 var con = require(appRoot + '/services/connectionService');
 
 exports.getUsers = function (queryString, callback) {
+    var sql = "select  * from tbl_admin_login";
+    con.query(sql, function (err, result) {
+        if (err) {
+            callback(null, err);
+            return;
+        }
+        else {
+            callback(null, result);
+            return;
+        }
+    });
 }
 
 exports.getUserById = function (login_user_name, callback) {
